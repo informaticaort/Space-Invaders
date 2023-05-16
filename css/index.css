@@ -52,7 +52,8 @@ body {
 
 #splash-instruction {
   position: absolute;
-  bottom: 170px;
+  line-height: 1cm;
+  bottom: 160px;
   left: 215px;
   width: 500px;
   height: 40px;
@@ -119,20 +120,20 @@ body {
   align-items: center;
   justify-content: space-around;
 
-  background-color: grey;
+  background-color: rgb(255, 255, 255);
   height: 400px;
   width: 300px;
 
   font-family: 'Bungee Inline', cursive;
   font-size: 22px;
   letter-spacing: 2px;
-  color: #fff;
+  color: #56bdec;
 
   border-radius: 10px;
 }
 
 .header {
-  color: #ee300c;
+  color: #db0cee;
 }
 
 .button:hover {
@@ -249,8 +250,7 @@ body {
 #grunt-1 {
   position: absolute;
   left: 355px;
-  bottom: 350px;
-
+  bottom: 340px;
   height: 30px;
   width: 30px;
 }
@@ -258,7 +258,7 @@ body {
 #soldier-1 {
   position: absolute;
   left: 355px;
-  bottom: 310px;
+  bottom: 285px;
 
   height: 30px;
   width: 30px;
@@ -267,7 +267,7 @@ body {
 #invader-1 {
   position: absolute;
   left: 355px;
-  bottom: 270px;
+  bottom: 230px;
 
   height: 30px;
   width: 30px;
@@ -276,7 +276,7 @@ body {
 #ufo {
   position: absolute;
   left: 344px;
-  bottom: 226px;
+  bottom: 185px;
 
   height: 32px;
   width: 55px;
