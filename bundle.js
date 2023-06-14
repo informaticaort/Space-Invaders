@@ -982,9 +982,9 @@
 	  }
 	};
 	
-	Ship.prototype.fireBullet = function() {
-	  // Early return prevents player from spamming bullets, limiting
-	  // the player to one bullet at a time
+	Ship.prototype.fireBullet = function() {  // hace que la nave dispare balas
+	  // retorno temprano evita que el jugador dispare balas, limitando
+	  // al jugador a una bala a la vez
 	  if (this.currentBullet) { return; }
 	
 	  let bulletPosX = this.pos[0] - 2;
@@ -1002,7 +1002,7 @@
 	
 	  let bulletPos = [bulletPosX, bulletPosY];
 	
-	  if (this.name === 'grunt') {
+	  if (this.name === 'grunt') {   // este if hace que las balas de las naves enemigas sean de diferentes colores
 	    bulletColor = "#a2d3f5";
 	  } else if (this.name === 'soldier') {
 	    bulletColor = "#fdfd67";
@@ -1082,7 +1082,7 @@
 	  }
 	
 	
-	  if (!this.game.gameView.isMuted) {
+	  if (!this.game.gameView.isMuted) { // este if maneja los sonidos de las balas de los dos bandos
 	    let shootSound = '';
 	    if (this.name === 'defender') {
 	      shootSound = './sounds/defender_gun2.wav';
@@ -1094,7 +1094,7 @@
 	
 	    var sound = new Howl({
 	      src: [shootSound],
-	      volume: 0.3,
+	      volume: 0.3,    // volumen del juego
 	    });
 	
 	    sound.play();
@@ -1104,7 +1104,7 @@
 	    this.currentBullet = true;
 	};
 	
-	Ship.prototype.reverse = function() {
+	Ship.prototype.reverse = function() {  // invierte el movimiento de la nave
 	  let newVel = Math.abs(this.vel[0]) + 0.02;
 	  if (this.vel[0] > 0) {
 	    newVel = 0 - newVel;
@@ -1139,7 +1139,7 @@
 	    return;
 	  }
 	
-	  // Player loses game if invaders move too close to the bottom
+	  // El jugador pierde el juego si los invasores se acercan demasiado a la parte inferior
 	  if (this.pos[1] > this.canvasSize[1] - 100) {
 	    this.game.lose();
 	  }
@@ -1156,7 +1156,7 @@
 	  this.draw(this.game.ctx);
 	};
 	
-	Ship.prototype.power = function(impulse) {
+	Ship.prototype.power = function(impulse) {  // maneja la velocidad de la nave
 	  if (this.speedUp) {
 	    let speed = this.speedUp2 ? 8 : 5;
 	    if (impulse[0] < 0) {
@@ -1376,7 +1376,7 @@
 	};
 	
 	ShieldPiece.prototype.move = function() {
-	  // default do nothing
+	  // por defecto no hace nada
 	};
 	
 	ShieldPiece.prototype.draw = function(ctx) {
@@ -1397,7 +1397,7 @@
 	};
 	
 	ShieldPiece.prototype.collideWith = function(otherObject) {
-	  // default do nothing
+	  // por defecto no hace nada
 	};
 	
 	module.exports = ShieldPiece;
@@ -1477,18 +1477,7 @@
 	  let dropChance = Math.random() * 100;
 	
 	  if (dropChance < 50) {
-	    let rollPowers = Math.random() * 100;
-	    // if (rollPowers < 20) {
-	    //   this.spawnLife();
-	    // }
-	    // handle logic for this later
-	    // else if (rollPowers < 55) {
-	    //   power = this.spawnSpeed();
-	    // }
-	    // else {
-	      // this.spawnGun();
-	      // this.spawnSpeed();
-	    // }
+	   
 	
 	    if (rollPowers < 50) {
 	      this.spawnGun();
@@ -1607,24 +1596,6 @@
 	    else if (i === 20) { posY -= 7; }
 	  }
 	
-	  // for (let i = 1; i < 29; i++) {
-	  //   let shieldPiece = new ShieldPiece ({
-	  //     id: i,
-	  //     pos: [posX, posY],
-	  //     radius: this.radius,
-	  //     color: this.color,
-	  //     util: Util,
-	  //     game: this.game
-	  //   });
-	  //
-	  //   shieldPiece.draw(ctx);
-	  //   this.game.shieldPieces.push(shieldPiece);
-	  //
-	  //   if (i < 14) { posX += 7; }
-	  //   else if (i === 14) { posY -= 7; }
-	  //   else if (i < 28) { posX -= 7; }
-	  //   else if (i === 28) { posY -= 7; }
-	  // }
 	};
 	
 	module.exports = Shield;
@@ -1676,4 +1647,3 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=bundle.js.map
