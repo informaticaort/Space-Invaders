@@ -41,7 +41,10 @@
 /******/ })
 /************************************************************************/
 /******/ ([
+
+
 /* 0 */
+/******************************* Inicio de botones y sus comportaamientos *********************************************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	const GameView = __webpack_require__(1);
@@ -55,8 +58,8 @@
 	  const ctx        = canvas.getContext('2d');
 	  const gameView   = new GameView(ctx, canvasSize);
 	
-	  gameView.welcome();
-	
+	  gameView.welcome();  // pantalla de bienvenida
+	// Botones del juego
 	  const mainLogo           = document.getElementById('main-logo');
 	  const playGameButton     = document.getElementById('play-game');
 	  const gameOverImage      = document.getElementById('game-over');
@@ -79,7 +82,7 @@
 	  const mute               = document.getElementById('mute');
 	  const splashInstruction  = document.getElementById('splash-instruction');
 	
-	  audio.addEventListener('click', () => {
+	  audio.addEventListener('click', () => {  //  funcion para el audio
 	    if (audio.className === 'hide') {
 	      audio.className   = 'show';
 	      mute.className    = 'hide';
@@ -91,7 +94,7 @@
 	    gameView.toggleAudio();
 	  });
 	
-	  mute.addEventListener('click', () => {
+	  mute.addEventListener('click', () => { // funcion para el muteo del juego
 	    if (audio.className === 'hide') {
 	      audio.className   = 'show';
 	      mute.className    = 'hide';
@@ -103,7 +106,7 @@
 	    gameView.toggleAudio();
 	  });
 	
-	  playGameButton.addEventListener("click", () => {
+	  playGameButton.addEventListener("click", () => { // funcion para el boton de play y lo que pasa cuando se lo presiona
 	    menuButton.className        =     '';
 	    playGameButton.className    = 'hide';
 	    mainLogo.className          = 'hide';
@@ -118,7 +121,7 @@
 	    gameView.start();
 	  });
 	
-	  menuButton.addEventListener("click", () => {
+	  menuButton.addEventListener("click", () => { // funcion para el boton de menu y lo que pasa cuando se lo presiona
 	    gameView.pause();
 	
 	    menuContainer.className = 'show';
@@ -128,7 +131,7 @@
 	    restartButton.className = '';
 	  });
 	
-	  closeAbout.addEventListener('click', () => {
+	  closeAbout.addEventListener('click', () => { // funcion para el boton de Cerrar en la sección del descripción del juego y lo que pasa cuando se lo presiona
 	    gameView.pause();
 	
 	    about.className = 'hide';
@@ -142,7 +145,7 @@
 	    restartButton.className = '';
 	  });
 	
-	  aboutButton.addEventListener('click', () => {
+	  aboutButton.addEventListener('click', () => { // funcion para el boton de About (acerca de) y lo que pasa cuando se lo presiona
 	    gameView.pause();
 	
 	    menuContainer.className = 'hide';
@@ -155,7 +158,7 @@
 	    closeAbout.className = 'show';
 	  });
 	
-	  closeInstructions.addEventListener('click', () => {
+	  closeInstructions.addEventListener('click', () => { // funcion para el boton de Cerrar en la sección de instrucciones y lo que pasa cuando se lo presiona
 	    gameView.pause();
 	
 	    about.className = 'hide';
@@ -169,7 +172,7 @@
 	    restartButton.className = '';
 	  });
 	
-	  instructionsButton.addEventListener('click', () => {
+	  instructionsButton.addEventListener('click', () => { // funcion para el boton de Instrucciones y lo que pasa cuando se lo presiona
 	    gameView.pause();
 	
 	    menuContainer.className = 'hide';
@@ -203,11 +206,11 @@
 	  });
 	
 	});
-
+/************************************************************FIn de botones y sus comportamientos *********************************************************************************************************************/
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports, __webpack_require__) { // 
 
 	const Game = __webpack_require__(2);
 	
@@ -318,7 +321,7 @@
 	  let x = this.game.DIM_X * .87, y = this.game.DIM_Y * .05;
 	
 	  ctx.font = "23px Bungee Inline";
-	  ctx.fillText(`LIVES: ${this.game.defenderLives}`, x, y);
+	  ctx.fillText(`VIDAS: ${this.game.defenderLives}`, x, y);
 	};
 	
 	GameView.prototype.addMenu = function(ctx) {
@@ -328,12 +331,12 @@
 	GameView.prototype.addScoreText = function(ctx) {
 	  let x = this.game.DIM_X * .01, y = this.game.DIM_Y * .05;
 	  // ctx.find = "20px Georgia";
-	  ctx.fillText(`SCORE: ${this.game.score}`, x, y);
+	  ctx.fillText(`PUNTOS: ${this.game.score}`, x, y);
 	};
 	
 	GameView.prototype.addLevelText = function(ctx) {
 	  let x = this.game.DIM_X * .01, y = this.game.DIM_Y * .95;
-	  ctx.fillText(`LEVEL: ${this.game.level}`, x, y);
+	  ctx.fillText(`NIVEL: ${this.game.level}`, x, y);
 	}
 	
 	GameView.prototype.bindKeyHandlers = function() {
@@ -442,7 +445,7 @@
 	  ];
 	};
 	
-	Game.prototype.addStars = function() {
+	Game.prototype.addStars = function() { // agrega las estrellas al juego
 	  for (let i = 0; i < Game.NUM_STARS; i++) {
 	    this.stars.push(new Star({
 	      id: i,
@@ -454,8 +457,8 @@
 	  }
 	};
 	
-	Game.prototype.addUfo = function(ctx) {
-	  // Early return if a ufo is currently spawned
+	Game.prototype.addUfo = function(ctx) {  // agrega el ufo al juego
+
 	  if (this.ufo) { return; }
 	
 	  let spawnUfoChance = Math.random() * 700;
@@ -490,7 +493,7 @@
 	
 	};
 	
-	Game.prototype.addInvaderShips = function(level = 1) {
+	Game.prototype.addInvaderShips = function(level = 1) {  // agrega las naves enemigas al juego
 	  let invaderShipName, invaderShipImage;
 	  let y = 100;
 	  let invaderIdx = 0;
@@ -531,7 +534,7 @@
 	
 	};
 	
-	Game.prototype.addShields = function() {
+	Game.prototype.addShields = function() {  // agrega los escudos al juego
 	  for (let i = 0, x = .05; i < 5; i++, x += 0.2) {
 	    let shieldPosX = this.canvasSize[0] * x + 14;
 	    let shieldPosY = this.canvasSize[1] * .8;
@@ -548,13 +551,13 @@
 	  }
 	};
 	
-	Game.prototype.refreshShields = function() {
+	Game.prototype.refreshShields = function() {  // refresca los escudos al juego
 	  this.shieldPieces = [];
 	  this.shields = [];
 	  this.addShields();
 	};
 	
-	Game.prototype.addDefenderShip = function() {
+	Game.prototype.addDefenderShip = function() {  // agrega la nave del jugador al juego
 	  const defender = new Ship ({
 	    name: 'defender',
 	    game: this,
@@ -571,7 +574,7 @@
 	  this.defender = defender;
 	};
 	
-	Game.prototype.getAllObjects = function() {
+	Game.prototype.getAllObjects = function() {  // obtiene todos los objetos del juego
 	  return [].concat(
 	    this.ufo,
 	    this.shieldPieces,
@@ -581,32 +584,32 @@
 	  );
 	};
 	
-	Game.prototype.moveObjects = function() {
+	Game.prototype.moveObjects = function() {   // mueve los objetos del juego
 	  this.getAllObjects().forEach(object => {
 	    if (object == null) { return; }
 	    object.move();
 	  });
 	};
 	
-	Game.prototype.moveInvaders = function() {
+	Game.prototype.moveInvaders = function() {  // mueve las naves enemigas del juego
 	  this.invaderShips.forEach(ship => {
 	    ship.move();
 	  });
 	};
 	
-	Game.prototype.toggleInvaders = function() {
+	Game.prototype.toggleInvaders = function() {  // cambia la imagen de las naves enemigas del juego
 	  this.invaderShips.forEach(ship => {
 	    ship.toggleImage();
 	  });
 	};
 	
-	Game.prototype.reverseAllInvaders = function() {
+	Game.prototype.reverseAllInvaders = function() { // invierte el movimiento de las naves enemigas del juego
 	  this.invaderShips.forEach(invader => {
 	    invader.reverse();
 	  });
 	};
 	
-	Game.prototype.wrap = function(pos) {
+	Game.prototype.wrap = function(pos) {  // envuelve los objetos del juego
 	  let x = pos[0], y = pos[1];
 	  let maxX = this.DIM_X, maxY = this.DIM_Y;
 	
@@ -616,26 +619,26 @@
 	  return [wrappedX, wrappedY];
 	};
 	
-	Game.prototype.draw = function(ctx) {
+	Game.prototype.draw = function(ctx) {  // dibuja los objetos del juego
 	  ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
 	  ctx.fillStyle = Game.BG_COLOR;
 	  ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
 	
 	  this.defender.draw(ctx);
 	
-	  this.getAllObjects().forEach(object => {
+	  this.getAllObjects().forEach(object => { 
 	    if (object == null) { return; }
 	    object.draw(ctx);
 	  });
 	};
 	
-	Game.prototype.lose = function() {
+	Game.prototype.lose = function() {  // pierde el juego
 	  this.gameView.pause();
 	  this.gameView.addLivesText(this.ctx);
 	  this.gameView.gameOver();
 	};
 	
-	Game.prototype.winRound = function() {
+	Game.prototype.winRound = function() {  // gana la ronda del juego
 	  if (this.invaderShips.length === 0) {
 	    setTimeout(() => {
 	      if (this.invaderShips.length === 0) {
@@ -648,12 +651,12 @@
 	  }
 	};
 	
-	Game.prototype.isOutOfBounds = function (pos) {
+	Game.prototype.isOutOfBounds = function (pos) {  // verifica si los objetos del juego estan fuera de los limites
 	  return (pos[0] < -50) || (pos[1] < 0) ||
 	    (pos[0] > this.DIM_X + 50) || (pos[1] > this.DIM_Y);
 	};
 	
-	Game.prototype.collisionObjects = function() {
+	Game.prototype.collisionObjects = function() {  // verifica si los objetos del juego colisionan
 	  return [].concat(
 	    this.bullets,
 	    this.invaderShips,
@@ -664,9 +667,9 @@
 	  );
 	};
 	
-	// This method makes enemy ships shoot bullets
-	Game.prototype.enemyFire = function() {
-	  // fireChance increases as the horde gets wiped out
+	// Este metodo hace que los enemigos disparen balas
+	Game.prototype.enemyFire = function() {   // hace que los enemigos disparen balas
+	  // las posibilidades de disparo aumenta a medida que la horda se elimina
 	  let fireChance, invaderCount = this.invaderShips.length;
 	  if (invaderCount < 10) {
 	    fireChance = 500;
@@ -688,7 +691,7 @@
 	    }
 	  });
 	
-	  // Early return if ufo is not spawned
+	  //retorno temprano si el ufo no esta en el juego
 	  if (this.ufo == null) { return; }
 	
 	  let ufoFire = Math.random() * 1000;
@@ -697,14 +700,14 @@
 	  }
 	};
 	
-	// This method makes enemy ships move faster with each one that dies
+	// Este metodo hace que las naves enemigas se muevan mas rapido con cada una que muere
 	Game.prototype.increaseInvadersSpeed = function() {
 	  this.invaderShips.forEach(invader => {
 	    invader.increaseSpeed();
 	  });
 	};
 	
-	Game.prototype.checkCollisions = function() {
+	Game.prototype.checkCollisions = function() {  // verifica las colisiones de los objetos del juego
 	  let collisionObjects = this.collisionObjects();
 	  for (var i = 0; i < collisionObjects.length; i++) {
 	    for (var j = 0; j < collisionObjects.length; j++) {
@@ -723,7 +726,7 @@
 	
 	      if (Util.validCollision(options)) {
 	        if (object1.isCollidedWith(object2)) {
-	          // collideWith handles logic for removing objects off of canvas
+			  // collideWith maneja la logica para eliminar objetos fuera del canvas
 	          object1.collideWith(object2);
 	        }
 	      }
@@ -732,14 +735,14 @@
 	  }
 	};
 	
-	Game.prototype.currentDefenderBullet = function() {
+	Game.prototype.currentDefenderBullet = function() { // verifica si la bala actual es del jugador
 	  this.bullets.forEach(bullet => {
 	    if (bullet.ship.name === 'defender') return true;
 	  });
 	  return false;
 	};
 	
-	Game.prototype.remove = function(object) {
+	Game.prototype.remove = function(object) { // remueve los objetos del juego
 	  if (object instanceof Bullet) {
 	    object.removeBullet(object);
 	  } else if (object instanceof Ship) {
@@ -756,7 +759,7 @@
 	  }
 	};
 	
-	Game.prototype.step = function() {
+	Game.prototype.step = function() {  	// hace que el juego se actualice
 	  this.moveObjects();
 	  this.checkCollisions();
 	  this.enemyFire();
@@ -776,7 +779,7 @@
 	const Note = __webpack_require__(8);
 	const PowerUp = __webpack_require__(9);
 	
-	const Ship = function(options = { radius: 13 }) {
+	const Ship = function(options = { radius: 13 }) {  // constructor de la nave
 	  this.id = options.id;
 	  this.name = options.name;
 	  this.game = options.game;
@@ -799,7 +802,7 @@
 	
 	Util.inherits(Ship, MovingObject);
 	
-	Ship.prototype.removeShip = function(shipToRemove) {
+	Ship.prototype.removeShip = function(shipToRemove) {   // remueve la nave del juego
 	  this.game.invaderShips.forEach(ship => {
 	    if (ship.id === shipToRemove.id) {
 	      this.game.invaderShips = this.game.invaderShips.filter(s => (
@@ -809,7 +812,7 @@
 	  });
 	};
 	
-	Ship.prototype.draw = function(ctx) {
+	Ship.prototype.draw = function(ctx) {   // dibuja la nave
 	  if (this.name === 'ufo') {
 	    let x = this.pos[0] - 26;
 	    let y = this.pos[1] - 3;
@@ -817,7 +820,8 @@
 	    return;
 	  }
 	
-	  // subtract from pos to align the image with the radius
+	
+	  //sustraer de pos para alinear la imagen con el radio
 	  let x = this.pos[0] - 12;
 	  let y = this.pos[1] - 12;
 	
@@ -831,7 +835,7 @@
 	
 	};
 	
-	Ship.prototype.respawn = function() {
+	Ship.prototype.respawn = function() {  // hace que la nave vuelva a aparecer en el juego
 	  this.deathImage();
 	
 	  this.game.defenderLives -= 1;
@@ -855,7 +859,7 @@
 	
 	};
 	
-	Ship.prototype.death = function() {
+	Ship.prototype.death = function() { // hace que la nave muera
 	  let deathSound;
 	
 	  if (this.name === 'defender') {
@@ -895,7 +899,7 @@
 	  sound.play();
 	};
 	
-	Ship.prototype.deathImage = function() {
+	Ship.prototype.deathImage = function() { // imagen de la muerte de la nave
 	  if (this.name === 'defender') {
 	    this.img = document.getElementById('defender-death');
 	  } else {
@@ -904,7 +908,7 @@
 	  this.draw(this.game.ctx);
 	};
 	
-	Ship.prototype.dropPowerUp = function(pos) {
+	Ship.prototype.dropPowerUp = function(pos) {  // hace que la nave suelte un power up
 	  const powerUp = new PowerUp({
 	    vel: [0, 4],
 	    pos: pos,
@@ -918,7 +922,7 @@
 	  this.game.powerUps.push(powerUp);
 	};
 	
-	Ship.prototype.toggleImage = function() {
+	Ship.prototype.toggleImage = function() {  // cambia la imagen de la nave
 	  if (this.isDead) { return; }
 	
 	  if (this.name === 'grunt') {
@@ -936,7 +940,7 @@
 	  }
 	};
 	
-	Ship.prototype.killScore = function() {
+	Ship.prototype.killScore = function() {  // puntaje por matar a la nave
 	  if (this.name === 'grunt') {
 	    return 10;
 	  } else if (this.name === 'soldier') {
@@ -951,7 +955,7 @@
 	  }
 	};
 	
-	Ship.prototype.collideWith = function(object) {
+	Ship.prototype.collideWith = function(object) {   // maneja la colision de la nave con otros objetos
 	  if (this.side === object.shipSide) return;
 	
 	  this.bulletsInPlay.shift();
