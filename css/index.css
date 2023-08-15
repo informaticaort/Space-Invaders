@@ -7,7 +7,7 @@ body {
   align-items: center;
 
   background: rgb(2,0,36);
-  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 45%, rgba(5,5,91,1) 76%, rgba(9,9,121,1) 100%);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 50%, rgba(5,5,91,1) 80%, rgba(9,9,121,1) 100%);
 
   padding: 0;
   margin: 0;
@@ -18,7 +18,7 @@ body {
   height: 700px;
   width: 900px;
   position: relative;
-  background-color: #000;
+  background-color: transparent;
 }
 
 #game-canvas {
@@ -63,7 +63,7 @@ body {
 
   text-align: center;
   font-family: 'Press Start 2P', cursive;
-  font-size: 23px;
+  font-size: 20px;
   color: #fff;
   letter-spacing: 2px;
 }
@@ -95,7 +95,7 @@ body {
 }
 
 #menu-button {
-  font-family: 'Bungee Inline', cursive;
+  font-family: 'Press Start 2P', cursive;
   font-size: 23px;
   color: #e7e7e7;
 
@@ -110,7 +110,7 @@ body {
 
 #menu-button:hover {
   cursor: pointer;
-  color: #ffff6d;
+  color: #faf21b;
 }
 
 #menu-container {
@@ -123,20 +123,21 @@ body {
   align-items: center;
   justify-content: space-around;
 
-  background-color: rgb(255, 255, 255);
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(5,5,91,1) 85%, rgba(9,9,121,1) 100%);
   height: 400px;
   width: 300px;
 
-  font-family: 'Bungee Inline', cursive;
-  font-size: 22px;
-  letter-spacing: 2px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
   color: #56bdec;
 
   border-radius: 10px;
 }
 
 .header {
-  color: #db0cee;
+  color: #faf21b;
+  text-align: center;
 }
 
 .button:hover {
@@ -145,7 +146,7 @@ body {
 
 #about-button:hover {
   cursor: pointer;
-  color: #ffff6d;
+  color: #faf21b;
 }
 
 #about {
@@ -169,7 +170,7 @@ body {
 }
 
 #port-link {
-  color: #ffff6d;
+  color: #faf21b;
   text-decoration: none;
   transition: color .15s ease-in;
 }
@@ -187,12 +188,12 @@ body {
 
 #close-about:hover {
   cursor: pointer;
-  color: #ffff6d;
+  color: #faf21b;
 }
 
 #instructions-button:hover {
   cursor: pointer;
-  color: #ffff6d;
+  color: #faf21b;
 }
 
 #instructions {
@@ -223,22 +224,22 @@ body {
 
 #close-instructions:hover {
   cursor: pointer;
-  color: #ffff6d;
+  color: #faf21b;
 }
 
 #close-instructions:hover {
   cursor: pointer;
-  color: #ffff6d;
+  color: #faf21b;
 }
 
 #resume-button:hover {
   cursor: pointer;
-  color: #ffff6d;
+  color: #faf21b;
 }
 
 #restart-button:hover {
   cursor: pointer;
-  color: #ffff6d;
+  color: #faf21b;
 }
 
 #main-logo {
