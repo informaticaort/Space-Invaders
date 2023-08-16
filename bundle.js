@@ -320,7 +320,7 @@
 	GameView.prototype.addLivesText = function(ctx) {
 	  let x = this.game.DIM_X * .87, y = this.game.DIM_Y * .05;
 	
-	  ctx.font = "23px Bungee Inline";
+	  ctx.font = "23px Bungee Inline"; //Preguntar cómo cambiar la font desde acá a la Press Start 2P (20px)
 	  ctx.fillText(`VIDAS: ${this.game.defenderLives}`, x, y);
 	};
 	
