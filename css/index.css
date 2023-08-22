@@ -26,6 +26,7 @@ body {
   width: 900px;
   position: relative;
   background-color: transparent;
+      margin-top: 140px;
 }
 
 #game-canvas {
